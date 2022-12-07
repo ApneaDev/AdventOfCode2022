@@ -8,6 +8,11 @@ use ApneaDev\AoC22\lib\Collection\Collection;
 
 class Runner extends \ApneaDev\AoC22\lib\Runner\Runner
 {
+    /**
+     *  @var string
+     */
+    protected $input = null;
+
     public function __construct(Collection $input)
     {
         $this->input = (string) $input[0];
@@ -23,7 +28,7 @@ class Runner extends \ApneaDev\AoC22\lib\Runner\Runner
         return (string) $this->findMarker($this->input, 14);
     }
 
-    public function findMarker(string $input, int $windowSize)
+    public function findMarker(string $input, $windowSize): ?int
     {
         $pointer = 0;
         $inputLength = strlen($input);
@@ -39,7 +44,7 @@ class Runner extends \ApneaDev\AoC22\lib\Runner\Runner
         return null;
     }
 
-    public function checkWindow(string $window)
+    public function checkWindow(string $window): ?int
     {
         $map = [];
         $windowSize = strlen($window);
