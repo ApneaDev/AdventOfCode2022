@@ -6,7 +6,7 @@ namespace ApneaDev\AoC22\lib\Collection;
 
 use ApneaDev\AoC22\lib\Stream\StreamInterface;
 
-class Collection implements \ArrayAccess
+class Collection implements \ArrayAccess, \IteratorAggregate
 {
     protected $items = [];
 
@@ -61,6 +61,11 @@ class Collection implements \ArrayAccess
     public function offsetUnset($key)
     {
         unset($this->items[$key]);
+    }
+
+    public function getIterator(): \Traversable
+    {
+        return new \ArrayIterator($this->items);
     }
 
     public function keys()
